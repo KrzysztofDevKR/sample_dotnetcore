@@ -4,12 +4,19 @@ dist: trusty
 mono: none
 dotnet: 2.1.3
 branches:
- - only:
-   - master
-
+- only:
+  - master
 before_script:
- - dotnet restore
-
+- dotnet restore
 script:
- - dotnet build src/Sample.Api/
- - dotnet test tests/Sample.Tests.EndToEnd/
+- dotnet build src/Sample.Api/
+- dotnet test tests/Sample.Tests.EndToEnd/
+notifications:
+  slack:
+    rooms:
+      secure: KpeAARIZDm75ZyYOsBa6WERMnDI4oaigjvNEc5RUT/fTzk5Fq9A8y5ZUwc5fJamVKm8XEMMeaZ6+uW5O8xRglojvW6xWi6UdWAdo93KMNiBNAE/kdlu2oT7wJ5AusibGDv0DCSSdtKq5z8u0ADWsWW5Lt0oBhveFRZcVr77dA+DMbFIE91ht0KvrETlgXpp8P2S4p7QYj8guYR0Nc5wH5/ffiM0JshLe8Ue1HSv2Kc54qKIXNfSKkgsgmIdodAH7DiopLeaOMgDFa5ddUjUXC3BLmqRzGK07oKuIDpW7C0loK9/8ZGgUCVAJXRgWfGdHpwYwrIE9/MrAhhxHUwa38rXTFhyqz25U5nBEc6BaoyOWPFqmC2qHw/XpjKDtf3GrRegJk8Li1JhyjK1PPw7zv4/6XsOa82a/qzbqYReh+5JtALvGiuYENpE1DELAFqKRoi8jfKamBm39EGpcPHscnaSr57g9LMzdb7Y2dTKngMVXbXO89tNaZV9/FPbeuAxOG1dnn+45AbROUBhPd7hMK9Z1K+2HrMm2G3ohlpRE+zX84apbkRpqPGhZyytuhEJUg+9G165B+Yd4rVTjyr+NzeR9LWPL57COu7u9fBFPygWo7+dI93e9Z1NVBOnlq1MC9NypbYf4WWgOOeYmXcYrdNY3menBsdZGn2G60jgVElM=
+      on_success: always
+      on_failure: always
+    email:
+      on_success: never
+      on_failure: always
