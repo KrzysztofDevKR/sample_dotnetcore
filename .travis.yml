@@ -13,6 +13,8 @@ script:
 - dotnet test tests/Sample.Tests.EndToEnd/
 notifications:
   email:
+    recipients:
+      - tester@devkr.pl
     on_success: always
     on_failure: always
   slack:
